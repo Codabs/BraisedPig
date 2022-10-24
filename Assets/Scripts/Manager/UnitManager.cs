@@ -11,9 +11,11 @@ public class UnitManager : MonoBehaviour
     public static UnitManager Instance;
     public UnitScript _unitSelected;
     [SerializeField] private List<GameObject> _herosUnit;
+    [SerializeField] private int _herosCount = 1;
     [SerializeField] private List<GameObject> _ennemisUnit;
-    private readonly List<UnitScript> _herosUnits = new();
-    private readonly List<UnitScript> _ennemisUnits = new();
+    [SerializeField] private int _ennemisCount = 0;
+    private List<UnitScript> _herosInTheGrid = new();
+    private List<UnitScript> _ennemisInTheGrid = new();
 
     //
     //GETTER AND SETTER
@@ -34,8 +36,7 @@ public class UnitManager : MonoBehaviour
 
     public void SpawnHeros()
     {
-        int _herosCount = 1;
-
+        DestoyAllHeros();
         for (int o = 0; o < _herosCount; o++)
         {
             var listOfSpawnedTile = GridManager.Instance.GetSpawnableTile();
@@ -45,31 +46,38 @@ public class UnitManager : MonoBehaviour
             spawnedHero.transform.position = randomTile.transform.position + script.Offset;
             script._tileOccupied = randomTile;
             script.SetSortingOrder(randomTile.SpriteRenderer.sortingOrder);
-            _herosUnits.Add(spawnedHero.GetComponent<UnitScript>());
+            _herosInTheGrid.Add(spawnedHero.GetComponent<UnitScript>());
         }
     }
     public void DestoyAllHeros()
     {
-        foreach (UnitScript hero in _herosUnits)
+        foreach (UnitScript hero in _herosInTheGrid)
         {
-            _herosUnits.Remove(hero);
             Destroy(hero.gameObject);
         }
-        //_herosUnits.RemoveAt();
+        _herosInTheGrid = new List<UnitScript>();
     }
     public void SpawnEnnemis()
     {
-        int _ennemisCount = 0;
-
+        DestroyAllEnnemis();
         for (int o = 0; o < _ennemisCount; o++)
         {
             var listOfSpawnedTile = GridManager.Instance.GetSpawnableTile();
-            if (listOfSpawnedTile == null) return;
             var spawnedEnnemi = Instantiate(_ennemisUnit[0]);
             var randomTile = listOfSpawnedTile[Mathf.Abs(Random.Range(0, listOfSpawnedTile.Count))];
-            spawnedEnnemi.transform.position = randomTile.transform.position;
-            spawnedEnnemi.GetComponent<UnitScript>()._tileOccupied = randomTile;
-            _ennemisUnits.Add(spawnedEnnemi.GetComponent<UnitScript>());
+            var script = spawnedEnnemi.GetComponent<UnitScript>();
+            spawnedEnnemi.transform.position = randomTile.transform.position + script.Offset;
+            script._tileOccupied = randomTile;
+            script.SetSortingOrder(randomTile.SpriteRenderer.sortingOrder);
+            _ennemisInTheGrid.Add(spawnedEnnemi.GetComponent<UnitScript>());
         }
+    }
+    public void DestroyAllEnnemis()
+    {
+        foreach (UnitScript ennemi in _ennemisInTheGrid)
+        {
+            Destroy(ennemi.gameObject);
+        }
+        _ennemisInTheGrid = new List<UnitScript>();
     }
 }

@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -72,5 +71,11 @@ public class GameManager : MonoBehaviour
     public void MoveUnit(UnitScript unit, List<BaseTile> path)
     {
         StartCoroutine(unit.MoveUnitInAPath(path));
+    }
+    public void RecontructTheGame()
+    {
+        _currentGameState = _states.StartGame();
+
+        _currentGameState.EnterState();
     }
 }

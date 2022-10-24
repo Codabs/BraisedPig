@@ -13,6 +13,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private Vector3 orgineTile;
     [SerializeField] int _width;
     [SerializeField] int _height;
+    [SerializeField] private Transform _tileParent;
     [SerializeField] float _tileSize;
     [SerializeField] Vector2 _offSpringY;
     [SerializeField] Vector2 _offSpringX;
@@ -65,7 +66,7 @@ public class GridManager : MonoBehaviour
 
                 Vector3 pos = new(posX.x + posY.x, posX.y + posY.y);
                 //On fait spawn une Tile
-                var spawnedTile = Instantiate(_newTile, pos, Quaternion.identity);
+                var spawnedTile = Instantiate(_newTile, pos, Quaternion.identity, _tileParent);
 
                 //On change son nom dans l'editeur
                 spawnedTile.name = $"Tile {x} {y}";
@@ -158,7 +159,6 @@ public class GridManager : MonoBehaviour
 
         return _tileList;
     }
-
     public List<BaseTile> GetSpawnableTile()
     {
         return _tiles.Values.Where(a => a.IsWalkable).ToList();
@@ -170,5 +170,8 @@ public class GridManager : MonoBehaviour
             tile._outline.SetActive(false);
         }
     }
-
+    public void SpawnTheOcean()
+    {
+        if (_tiles == null) return;
+    }
 }
