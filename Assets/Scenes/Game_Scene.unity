@@ -193,6 +193,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3950333001337704356, guid: 008b04392bb9cd44ab0fd00bc30bb17f, type: 3}
   m_PrefabInstance: {fileID: 12884203}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &12884206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5317572926392725650, guid: 008b04392bb9cd44ab0fd00bc30bb17f, type: 3}
+  m_PrefabInstance: {fileID: 12884203}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15af03e51910f684ca156d555b09c19f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &19366994
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,6 +340,7 @@ GameObject:
   - component: {fileID: 212829642}
   - component: {fileID: 212829641}
   - component: {fileID: 212829643}
+  - component: {fileID: 212829644}
   m_Layer: 0
   m_Name: Show A*
   m_TagString: Untagged
@@ -439,9 +451,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 608385060}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1047872886}
+        m_TargetAssemblyTypeName: PathFinderManager, Assembly-CSharp
+        m_MethodName: ShowCost
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -449,8 +461,20 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &212829644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212829639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f372d8212aafdfe4bbc4ecee6a192a8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &492671072
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,6 +774,7 @@ GameObject:
   - component: {fileID: 704018551}
   - component: {fileID: 704018550}
   - component: {fileID: 704018552}
+  - component: {fileID: 704018553}
   m_Layer: 0
   m_Name: Generate Button
   m_TagString: Untagged
@@ -872,6 +897,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &704018553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704018548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f372d8212aafdfe4bbc4ecee6a192a8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &891362443 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8782893478485058962, guid: 254b807f90c6ad54ba11f7ef38308fd1, type: 3}
@@ -1092,6 +1129,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1724646987636943899, guid: c70f54ef507d66d49b404c33fdd7a4c7, type: 3}
   m_PrefabInstance: {fileID: 1047872884}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1047872886 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1724646987636943896, guid: c70f54ef507d66d49b404c33fdd7a4c7, type: 3}
+  m_PrefabInstance: {fileID: 1047872884}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49fadcd590769624c9d5d3abc7f1e867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1057134759
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,6 +1558,7 @@ GameObject:
   - component: {fileID: 1704273044}
   - component: {fileID: 1704273043}
   - component: {fileID: 1704273042}
+  - component: {fileID: 1704273045}
   m_Layer: 0
   m_Name: Diagonal Button
   m_TagString: Untagged
@@ -1582,9 +1631,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 608385060}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 12884206}
+        m_TargetAssemblyTypeName: GridManager, Assembly-CSharp
+        m_MethodName: SetDiagonalMovementBool
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1632,6 +1681,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704273040}
   m_CullTransparentMesh: 1
+--- !u!114 &1704273045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704273040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f372d8212aafdfe4bbc4ecee6a192a8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1733545669
 GameObject:
   m_ObjectHideFlags: 0

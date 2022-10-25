@@ -19,6 +19,7 @@ public abstract class BaseTile : MonoBehaviour
     [SerializeField] private TextMeshPro G_Text;
     [SerializeField] private TextMeshPro H_Text;
     [SerializeField] private TextMeshPro F_Text;
+    [SerializeField] private Color _pathfindingColor;
     [SerializeField] private string _walkSoundFmodBank;
     //private readonly List<BaseTile> _pathToMe = new();
 
@@ -48,6 +49,7 @@ public abstract class BaseTile : MonoBehaviour
     private void OnMouseEnter()
     {
         _outline.SetActive(true);
+        //FMODUnity.RuntimeManager.PlayOneShot("event:/MouseSound/MouseOver");
         GridManager.Instance.TileSelectioned = this;
     }
 
@@ -69,14 +71,20 @@ public abstract class BaseTile : MonoBehaviour
         //Fonction utiliser quand la tile est créée
     }
 
-    [Button] public void ShowPathFinding()
+    public void ShowPathFinding()
     {
         G_Text.text = _gCost.ToString();
         H_Text.text = _hCost.ToString();
         F_Text.text = _fCost.ToString();
-        spriteRenderer.color = Color.black;
+        spriteRenderer.color = _pathfindingColor;
     }
-
+    public void ErasePathfinding()
+    {
+        G_Text.text = "";
+        H_Text.text = "";
+        F_Text.text = "";
+        spriteRenderer.color = Color.white;
+    }
     public void CalculateFCost()
     {
         _fCost = _gCost + _hCost;

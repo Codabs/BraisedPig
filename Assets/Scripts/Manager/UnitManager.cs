@@ -37,6 +37,7 @@ public class UnitManager : MonoBehaviour
     public void SpawnHeros()
     {
         DestoyAllHeros();
+        RemoveUnitSelectioned();
         for (int o = 0; o < _herosCount; o++)
         {
             var listOfSpawnedTile = GridManager.Instance.GetSpawnableTile();
@@ -60,6 +61,7 @@ public class UnitManager : MonoBehaviour
     public void SpawnEnnemis()
     {
         DestroyAllEnnemis();
+        RemoveUnitSelectioned();
         for (int o = 0; o < _ennemisCount; o++)
         {
             var listOfSpawnedTile = GridManager.Instance.GetSpawnableTile();
@@ -79,5 +81,9 @@ public class UnitManager : MonoBehaviour
             Destroy(ennemi.gameObject);
         }
         _ennemisInTheGrid = new List<UnitScript>();
+    }
+    private void RemoveUnitSelectioned()
+    {
+        if (_unitSelected != null) _unitSelected.DeSelection();
     }
 }

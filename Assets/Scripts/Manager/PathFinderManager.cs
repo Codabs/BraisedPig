@@ -11,8 +11,8 @@ public class PathFinderManager : MonoBehaviour
 
     [SerializeField] private int Move_Diagonal_Cost;
     [SerializeField] private int Move_Forward_Cost;
+    public bool _showA = false;
     public static PathFinderManager Instance;
-    [SerializeField] private BaseTile _targetTile;
     private List<BaseTile> _openList;
     private List<BaseTile> _closedList;
 
@@ -29,18 +29,6 @@ public class PathFinderManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            foreach (BaseTile tile in PathFinding(UnitManager.Instance._unitSelected._tileOccupied, _targetTile))
-            {
-                if (tile == null) continue;
-                tile.ShowPathFinding();
-            }
-        }
     }
 
     //
@@ -66,6 +54,7 @@ public class PathFinderManager : MonoBehaviour
         startTile.G_Cost = 0;
         startTile.H_Cost = CalculateDistanceCost(startTile, endTile);
         startTile.CalculateFCost();
+        GridManager.Instance.ErasedPathFinding();
 
         while (_openList.Capacity > 0)
         {
@@ -94,7 +83,8 @@ public class PathFinderManager : MonoBehaviour
                     neighborTile.G_Cost = tentativeGCost;
                     neighborTile.H_Cost = CalculateDistanceCost(neighborTile, endTile);
                     neighborTile.CalculateFCost();
-                    if(!_openList.Contains(neighborTile))
+                    if(_showA) neighborTile.ShowPathFinding();
+                    if (!_openList.Contains(neighborTile))
                     {
                         _openList.Add(neighborTile);
                     }
@@ -106,6 +96,20 @@ public class PathFinderManager : MonoBehaviour
         Debug.Log("NoPath");
         return null;
     }
+    public void ShowCost()
+    {
+        if (_showA)
+        {
+            _showA = false;
+        }
+        else
+        {
+            _showA = true;
+        }
+    }
+    //
+    //FONCTION PRIVEE
+    //
     private int CalculateDistanceCost(BaseTile a, BaseTile b)
     {
         int xDistance = Mathf.Abs(a.x - b.x);

@@ -21,6 +21,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] GameObject cam;
     private Dictionary<Vector2, BaseTile> _tiles;
     private BaseTile _tileSelectioned;
+    [SerializeField] private bool IsDiagonalMovementEnable = false;
 
     //
     //GETTER AND SETTER
@@ -129,24 +130,23 @@ public class GridManager : MonoBehaviour
             //Left
             _neighborTiles.Add(GetTileAtPosition(new Vector2(tileX - 1, tileY)));
             //Left Down
-            //if (tileY - 1 > 0) _neighborTiles.Add(GetTileAtPosition(new Vector2(tileX - 1, tileY - 1)));
+            if (IsDiagonalMovementEnable && tileY - 1 > 0) _neighborTiles.Add(GetTileAtPosition(new Vector2(tileX - 1, tileY - 1)));
             //Left Up
-            //if (tileY + 1 > GridManager.Instance.Height) _neighborTiles.Add(GetTileAtPosition(new Vector2(tileX - 1, tileY + 1)));
+            if (IsDiagonalMovementEnable && tileY + 1 > GridManager.Instance.Height) _neighborTiles.Add(GetTileAtPosition(new Vector2(tileX - 1, tileY + 1)));
         }
         if (tileX + 1 < GridManager.Instance.Width)
         {
             //Right
             _neighborTiles.Add(GetTileAtPosition(new Vector2(tileX + 1, tileY)));
             //Right Down
-            //if (tileY - 1 >= 0) _neighborTiles.Add(GetTileAtPosition(new Vector2(tileX + 1, tileY - 1)));
+            if (IsDiagonalMovementEnable && tileY - 1 >= 0) _neighborTiles.Add(GetTileAtPosition(new Vector2(tileX + 1, tileY - 1)));
             //Right Up
-            //if (tileY + 1 < GridManager.Instance.Height) _neighborTiles.Add(GetTileAtPosition(new Vector2(tileX + 1, tileY + 1)));
+            if (IsDiagonalMovementEnable && tileY + 1 < GridManager.Instance.Height) _neighborTiles.Add(GetTileAtPosition(new Vector2(tileX + 1, tileY + 1)));
         }
         //Down
         if(tileY - 1 >= 0) _neighborTiles.Add(GetTileAtPosition(new Vector2(tileX, tileY - 1)));
         //Up
         if (tileY + 1 < GridManager.Instance.Height) _neighborTiles.Add(GetTileAtPosition(new Vector2(tileX, tileY + 1)));
-
         var _tileList = new List<BaseTile>();
         foreach (BaseTile tile in _neighborTiles)
         {
@@ -170,8 +170,27 @@ public class GridManager : MonoBehaviour
             tile._outline.SetActive(false);
         }
     }
+    public void ErasedPathFinding()
+    {
+        foreach (BaseTile tile in _tiles.Values)
+        {
+            tile.ErasePathfinding();
+        }
+    }
     public void SpawnTheOcean()
     {
         if (_tiles == null) return;
     }
+    public void SetDiagonalMovementBool()
+    {
+        if(IsDiagonalMovementEnable)
+        {
+            IsDiagonalMovementEnable = false;
+        }
+        else
+        {
+            IsDiagonalMovementEnable = true;
+        }
+    }
+
 }

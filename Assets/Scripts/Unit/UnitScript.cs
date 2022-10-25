@@ -95,6 +95,7 @@ public class UnitScript : MonoBehaviour
     public void DeSelection()
     {
         _outlineSelected.SetActive(false);
+        UnitManager.Instance._unitSelected = null;
     }
     public void SetSortingOrder(int _order)
     {
