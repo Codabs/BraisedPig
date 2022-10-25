@@ -25,21 +25,6 @@ public class UnitScript : MonoBehaviour
     protected string faction;
 
     [SerializeField] Vector3 _unitOffset;
-
-    //Animation
-    [SerializeField] private string _idleAnim;
-
-    [SerializeField] private string _upLeftAnim;
-    [SerializeField] private string _upAnim;
-    [SerializeField] private string _upRightAnim;
-
-    [SerializeField] private string _downLeftAnim;
-    [SerializeField] private string _downAnim;
-    [SerializeField] private string _downRightAnim;
-
-    [SerializeField] private string _leftAnim;
-    [SerializeField] private string _rightAnim;
-
     //
     //Getters and Setters
     //
