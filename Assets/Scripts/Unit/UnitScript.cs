@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using FMOD;
 
 public class UnitScript : MonoBehaviour
 {
@@ -10,24 +11,26 @@ public class UnitScript : MonoBehaviour
     //
 
     [SerializeField] private Animator _animator;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private List<SpriteRenderer> _spriteRenderers;
 
     [SerializeField] private GameObject _outline;
     [SerializeField] private GameObject _outlineSelected;
     [SerializeField] private TrailRenderer _trail;
 
-    /*[SerializeField]*/
     public BaseTile _tileOccupied;
 
     [SerializeField] private int _numberOfActionParTurn;
     [SerializeField] private float _speed;
+    [SerializeField] private string _attackSound = "event:/UnitSound/Flamethrower";
     private readonly bool _isMoving;
     protected string faction;
 
     [SerializeField] Vector3 _unitOffset;
+
     //
     //Getters and Setters
     //
+
     public bool IsMoving { get { return _isMoving; } }
     public string Faction { get { return faction; } }
     public Vector3 Offset { get { return _unitOffset; } }
@@ -39,6 +42,7 @@ public class UnitScript : MonoBehaviour
     private void OnMouseEnter()
     {
         _outline.SetActive(true);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MouseSound/MouseOver");
     }
     private void OnMouseExit()
     {
@@ -46,8 +50,8 @@ public class UnitScript : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        Debug.Log("Click");
         GameManager.Instance.PlayerClickOnThisUnit(this);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MouseSound/MouseClick");
     }
 
     //
@@ -71,7 +75,24 @@ public class UnitScript : MonoBehaviour
             _tileOccupied = tile;
             tile._outline.SetActive(false);
         }
-        //_animator.Play("Idle_BlendTree");
+        _animator.Play("Idle_BlendTree");
+    }
+    public void AttackOtherUnit(UnitScript unitAttacked)
+    {
+        //Turn in direction of the unit attacked
+        _animator.SetFloat("moveX", 0);
+        _animator.SetFloat("moveY", 0);
+        //Play Animation
+        _animator.Play("Attack_BlenTree");
+    }
+    public void DestroyInStyle()
+    {
+        Destroy(gameObject);
+    }
+    public void StopAttacking()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(_attackSound);
+        _animator.Play("Idle_BlendTree");
     }
     public void Selection()
     {
@@ -85,7 +106,8 @@ public class UnitScript : MonoBehaviour
     public void SetSortingOrder(int _order)
     {
         _trail.sortingOrder = _order;
-        _spriteRenderer.sortingOrder = _order + 1;
+        foreach(SpriteRenderer _spriteRenderer in _spriteRenderers)
+            _spriteRenderer.sortingOrder = _order + 1;
         _outline.GetComponent<SpriteRenderer>().sortingOrder = _order + 2;
         _outlineSelected.GetComponent<SpriteRenderer>().sortingOrder = _order + 3;
     }

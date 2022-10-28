@@ -34,6 +34,9 @@ public class UnitManager : MonoBehaviour
     //FONCTION
     //
 
+    /// <summary>
+    /// Spawn The Heros
+    /// </summary>
     public void SpawnHeros()
     {
         DestoyAllHeros();
@@ -81,6 +84,14 @@ public class UnitManager : MonoBehaviour
             Destroy(ennemi.gameObject);
         }
         _ennemisInTheGrid = new List<UnitScript>();
+    }
+    public bool CanUnitBAttackUnitC(UnitScript unitB, UnitScript unitC)
+    {
+        var tileB = unitB._tileOccupied;
+        var tileC = unitC._tileOccupied;
+        var Distance = PathFinderManager.Instance.CalculateDistanceCost(tileB, tileC);
+        if (Distance <= 40) return true;
+        else return false;
     }
     private void RemoveUnitSelectioned()
     {

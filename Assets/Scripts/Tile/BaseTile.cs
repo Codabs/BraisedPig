@@ -27,9 +27,9 @@ public abstract class BaseTile : MonoBehaviour
     public int y;
 
     //PathFinding A*
-    [SerializeField] private float _gCost = 0;
-    [SerializeField] private float _hCost = 0;
-    [SerializeField] private float _fCost = 0;
+    private float _gCost = 0;
+    private float _hCost = 0;
+    private float _fCost = 0;
     public BaseTile _cameFromTile;
 
     //----------------
@@ -49,7 +49,6 @@ public abstract class BaseTile : MonoBehaviour
     private void OnMouseEnter()
     {
         _outline.SetActive(true);
-        //FMODUnity.RuntimeManager.PlayOneShot("event:/MouseSound/MouseOver");
         GridManager.Instance.TileSelectioned = this;
     }
 
@@ -61,6 +60,7 @@ public abstract class BaseTile : MonoBehaviour
     private void OnMouseDown()
     {
         GameManager.Instance.PlayerClickOnThisTile(this);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MouseSound/MouseClick");
     }
 
     //------------------
@@ -70,7 +70,9 @@ public abstract class BaseTile : MonoBehaviour
     {
         //Fonction utiliser quand la tile est créée
     }
-
+    /// <summary>
+    /// Affiche les valeurs du pathfindings A*
+    /// </summary>
     public void ShowPathFinding()
     {
         G_Text.text = _gCost.ToString();
@@ -78,6 +80,13 @@ public abstract class BaseTile : MonoBehaviour
         F_Text.text = _fCost.ToString();
         spriteRenderer.color = _pathfindingColor;
     }
+    public void SetColorToGreen()
+    {
+        spriteRenderer.color = Color.green;
+    }
+    /// <summary>
+    /// Retire le texte de la tile
+    /// </summary>
     public void ErasePathfinding()
     {
         G_Text.text = "";
@@ -89,7 +98,9 @@ public abstract class BaseTile : MonoBehaviour
     {
         _fCost = _gCost + _hCost;
     }
-
+    /// <summary>
+    /// Joue son de la marche
+    /// </summary>
     public void PlayWalkSound()
     {
         FMODUnity.RuntimeManager.PlayOneShot(_walkSoundFmodBank);

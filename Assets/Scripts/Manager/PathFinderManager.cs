@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using System;
 
 public class PathFinderManager : MonoBehaviour
 {
@@ -55,14 +56,17 @@ public class PathFinderManager : MonoBehaviour
         startTile.H_Cost = CalculateDistanceCost(startTile, endTile);
         startTile.CalculateFCost();
         GridManager.Instance.ErasedPathFinding();
-
-        while (_openList.Capacity > 0)
+        int resctrition = 0;
+        while (_openList.Capacity > 0 && resctrition < 50)
         {
+            resctrition++;
             BaseTile _currentTile = GetLowestFCostNode(_openList);
             if(_currentTile == endTile)
             {
                 //This is the End
-                return CalculatePath(endTile);
+                var path = CalculatePath(endTile);
+                if (_showA) SetAllColorGreen(path);
+                return path;
             }
 
             _openList.Remove(_currentTile);
@@ -96,6 +100,7 @@ public class PathFinderManager : MonoBehaviour
         Debug.Log("NoPath");
         return null;
     }
+
     public void ShowCost()
     {
         if (_showA)
@@ -107,19 +112,20 @@ public class PathFinderManager : MonoBehaviour
             _showA = true;
         }
     }
-    //
-    //FONCTION PRIVEE
-    //
-    private int CalculateDistanceCost(BaseTile a, BaseTile b)
+
+    public int CalculateDistanceCost(BaseTile a, BaseTile b)
     {
         int xDistance = Mathf.Abs(a.x - b.x);
         int yDistance = Mathf.Abs(a.y - b.y);
         int remining = Mathf.Abs(xDistance - yDistance);
         return Move_Diagonal_Cost * Mathf.Min(xDistance, yDistance) + Move_Forward_Cost * remining;
     }
+    //
+    //FONCTION PRIVEE
+    //
     private BaseTile GetLowestFCostNode(List<BaseTile> _tileList)
     {
-        if (_tileList == null) return null;
+        if (_tileList[0] == null) return null;
         BaseTile lowestFCost = _tileList[0];
         if (_tileList.Count == 0 || _tileList.Count == -1) return lowestFCost;
         for (int i = 1; i < _tileList.Count; i++)
@@ -143,5 +149,13 @@ public class PathFinderManager : MonoBehaviour
         }
         path.Reverse();
         return path;
+    }
+
+    private void SetAllColorGreen(List<BaseTile> path)
+    {
+        foreach(BaseTile tile in path)
+        {
+            if (tile != null) tile.SetColorToGreen();
+        }
     }
 }

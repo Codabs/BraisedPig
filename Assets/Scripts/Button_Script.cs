@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using FMOD;
 
-public class Button_Script : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
+public class Button_Script : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPointerClickHandler
 {
     [SerializeField] private Button button;
     private ColorBlock color1;
@@ -39,5 +39,10 @@ public class Button_Script : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
                 button.colors = color1;
             }
         }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MouseSound/MouseClick");
     }
 }

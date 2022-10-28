@@ -182,6 +182,34 @@ PrefabInstance:
       propertyPath: _tileParent
       value: 
       objectReference: {fileID: 1406631723}
+    - target: {fileID: 5317572926392725650, guid: 008b04392bb9cd44ab0fd00bc30bb17f, type: 3}
+      propertyPath: _tileList.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5317572926392725650, guid: 008b04392bb9cd44ab0fd00bc30bb17f, type: 3}
+      propertyPath: _tileList.Array.data[4]
+      value: 
+      objectReference: {fileID: 6952827784773266685, guid: bc810b01de6efd64ca13c3b0daedae9b, type: 3}
+    - target: {fileID: 5317572926392725650, guid: 008b04392bb9cd44ab0fd00bc30bb17f, type: 3}
+      propertyPath: _tileList.Array.data[5]
+      value: 
+      objectReference: {fileID: 6181177695578797949, guid: 278b0200b64f52543a7fd37d99685e04, type: 3}
+    - target: {fileID: 5317572926392725650, guid: 008b04392bb9cd44ab0fd00bc30bb17f, type: 3}
+      propertyPath: _tileList.Array.data[6]
+      value: 
+      objectReference: {fileID: 6396167414829145699, guid: a28d39cc00672294fbd35ff7be8799d6, type: 3}
+    - target: {fileID: 5317572926392725650, guid: 008b04392bb9cd44ab0fd00bc30bb17f, type: 3}
+      propertyPath: _tileList.Array.data[7]
+      value: 
+      objectReference: {fileID: 8882275772293190405, guid: e23209657b351264197a14649b677041, type: 3}
+    - target: {fileID: 5317572926392725650, guid: 008b04392bb9cd44ab0fd00bc30bb17f, type: 3}
+      propertyPath: _tileList.Array.data[8]
+      value: 
+      objectReference: {fileID: 2916005009682023889, guid: f0f78fa520578fd418510ce921d29852, type: 3}
+    - target: {fileID: 5317572926392725650, guid: 008b04392bb9cd44ab0fd00bc30bb17f, type: 3}
+      propertyPath: _tileList.Array.data[9]
+      value: 
+      objectReference: {fileID: 8882275772293190405, guid: e23209657b351264197a14649b677041, type: 3}
     - target: {fileID: 6645496481263977608, guid: 008b04392bb9cd44ab0fd00bc30bb17f, type: 3}
       propertyPath: m_Name
       value: Grid Manager
@@ -930,7 +958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f372d8212aafdfe4bbc4ecee6a192a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
+  button: {fileID: 704018552}
   color2:
     m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
     m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
@@ -962,7 +990,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 891362443}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
@@ -970,11 +998,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1566804003
+      Data2: 1260296737
+      Data3: -1163522904
+      Data4: 1773254557
+    Path: event:/Music/Game_Music
   Event: 
   PlayEvent: 1
   StopEvent: 2
@@ -983,8 +1011,8 @@ MonoBehaviour:
   Preload: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &938407394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,8 +1289,12 @@ PrefabInstance:
       value: Unit Manager
       objectReference: {fileID: 0}
     - target: {fileID: 2628991024616775887, guid: 1d58476fb9e0e494b84760ebf99f622a, type: 3}
+      propertyPath: _herosCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628991024616775887, guid: 1d58476fb9e0e494b84760ebf99f622a, type: 3}
       propertyPath: _ennemisCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2628991024616775887, guid: 1d58476fb9e0e494b84760ebf99f622a, type: 3}
       propertyPath: _ennemisUnit.Array.data[0]

@@ -28,9 +28,12 @@ public class GameState_NoAction : GameState
     }
     public override void AUnitIsClick(UnitScript unitScript)
     {
-        UnitManager.Instance._unitSelected = unitScript;
-        unitScript.Selection();
-        SwitchState(_states.UnitChose());
+        //if (unitScript.Faction == "hero" && _ctx.currentState == _states.ItsPlayerTurn())
+        //{
+            UnitManager.Instance._unitSelected = unitScript;
+            unitScript.Selection();
+            SwitchState(_states.UnitChose());
+        //}
     }
     public override void ATileIsClick(BaseTile baseTile)
     {

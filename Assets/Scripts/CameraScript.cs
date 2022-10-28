@@ -73,6 +73,9 @@ public class CameraScript : MonoBehaviour
     }
     private void ClampCamera()
     {
-        cam.transform.position = new Vector3(Mathf.Clamp(cam.transform.position.x, _clampX.x, _clampX.y), Mathf.Clamp(cam.transform.position.y, _clampY.x, _clampY.y), cam.transform.position.z);
+        cam.transform.position = new Vector3
+            (Mathf.Clamp(cam.transform.position.x, _clampX.x, _clampX.y), 
+            Mathf.Clamp(cam.transform.position.y, _clampY.x, _clampY.y), 
+            cam.transform.position.z);
     }
 }

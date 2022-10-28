@@ -90,8 +90,6 @@ public class GridManager : MonoBehaviour
         //On centre la caméra sur la grille
         cam.transform.position = orgineTile /*new Vector3(_width / 2 -.5f, _height / 2 - .5f, -10)*/;
     }
-
-    [Button]
     public void DestroyGridAndCleanTheDictionary()
     {
         if (_tiles != null)
@@ -106,7 +104,6 @@ public class GridManager : MonoBehaviour
         _tiles = new Dictionary<Vector2, BaseTile>();
         //UnitManager.Instance.DestoyAllHeros();
     }
-
     public BaseTile GetTileAtPosition(Vector2 vector2)
     {
         if (_tiles.TryGetValue(vector2, out BaseTile tile))
@@ -117,7 +114,6 @@ public class GridManager : MonoBehaviour
         Debug.LogWarning("Tile not found");
         return null;
     }
-
     public List<BaseTile> GetNeighborTiles(BaseTile _startingTile)
     {
         var tileX = _startingTile.x;

@@ -60,9 +60,12 @@ public class GameState_UnitChose : GameState
         else
         {
             //Can I Attaque this ennemi
-
-            //if yes, attaque the ennemis
-
+            if (UnitManager.Instance.CanUnitBAttackUnitC(UnitManager.Instance._unitSelected, unitScript))
+            {
+                //if yes, attaque the ennemis
+                _ctx._unitAttacked = unitScript;
+                Debug.Log("SwitchState(_states.StartGame())");
+            }
         }
     }
     public override void ATileIsClick(BaseTile baseTile)

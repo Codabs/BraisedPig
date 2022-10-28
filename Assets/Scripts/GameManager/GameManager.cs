@@ -16,13 +16,14 @@ public class GameManager : MonoBehaviour
     public UnitScript unit;
     public BaseTile tile;
     public List<BaseTile> path;
+
     //
+    public UnitScript _unitAttacked;
 
     //
     //MONOBEHAVIOUR
     //
-
-    private void Start()
+    private void Awake()
     {
         //Manager Permanent
         if (Instance == null)
@@ -33,7 +34,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
+    }
 
+    private void Start()
+    {
         //Create all other states
         _states = new GameState_Factory(this);
 

@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: Assets/Sound/BraisedPigFmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638022978754575374
+  lastModified: 638024588179503774
   FileSizes:
   - Name: Desktop
-    Value: 264064
+    Value: 6228832
   Exists: 1
 --- !u!114 &-8201186429722009049
 MonoBehaviour:
@@ -35,11 +35,38 @@ MonoBehaviour:
   Path: Assets/Sound/BraisedPigFmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638022978754629952
+  lastModified: 638024588179558338
   FileSizes:
   - Name: Desktop
-    Value: 920
+    Value: 1188
   Exists: 1
+--- !u!114 &-7293444732569032301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Game_Music
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Game_Music
+  Guid:
+    Data1: 1566804003
+    Data2: 1260296737
+    Data3: -1163522904
+    Data4: 1773254557
+  Banks:
+  - {fileID: -8445202747537750905}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-6419698670635913112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +121,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-255835562304052831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UnitSound/DamageEnnemi
+  m_EditorClassIdentifier: 
+  Path: event:/UnitSound/DamageEnnemi
+  Guid:
+    Data1: 753266378
+    Data2: 1100329551
+    Data3: 540491675
+    Data4: -945994206
+  Banks:
+  - {fileID: -8445202747537750905}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,12 +168,17 @@ MonoBehaviour:
   - {fileID: 1252801428523717149}
   - {fileID: 7979876461305166170}
   - {fileID: -6419698670635913112}
+  - {fileID: 5227971566914429472}
+  - {fileID: -7293444732569032301}
+  - {fileID: 2552465032990175217}
+  - {fileID: -255835562304052831}
+  - {fileID: 7477565329527618273}
   EditorParameters: []
   MasterBanks:
   - {fileID: -8445202747537750905}
   StringsBanks:
   - {fileID: -8201186429722009049}
-  cacheTime: 638022978754629952
+  cacheTime: 638024588179558338
   cacheVersion: 131593
 --- !u!114 &1252801428523717149
 MonoBehaviour:
@@ -139,6 +198,87 @@ MonoBehaviour:
     Data2: 1078412358
     Data3: 615296422
     Data4: 1922619173
+  Banks:
+  - {fileID: -8445202747537750905}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &2552465032990175217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UnitSound/DamagePlayer
+  m_EditorClassIdentifier: 
+  Path: event:/UnitSound/DamagePlayer
+  Guid:
+    Data1: -1482337943
+    Data2: 1307903134
+    Data3: 1848268990
+    Data4: -1849513696
+  Banks:
+  - {fileID: -8445202747537750905}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &5227971566914429472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Menu_Music
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Menu_Music
+  Guid:
+    Data1: -1647398649
+    Data2: 1115772658
+    Data3: 682220201
+    Data4: 414345649
+  Banks:
+  - {fileID: -8445202747537750905}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &7477565329527618273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UnitSound/Flamethrower
+  m_EditorClassIdentifier: 
+  Path: event:/UnitSound/Flamethrower
+  Guid:
+    Data1: -2113498056
+    Data2: 1249965071
+    Data3: -1203824495
+    Data4: 1640121822
   Banks:
   - {fileID: -8445202747537750905}
   IsStream: 0
