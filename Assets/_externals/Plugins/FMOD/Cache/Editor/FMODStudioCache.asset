@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/Sound/BraisedPigFmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638024588179503774
+  lastModified: 638025765851682427
   FileSizes:
   - Name: Desktop
     Value: 6228832
@@ -35,7 +35,7 @@ MonoBehaviour:
   Path: Assets/Sound/BraisedPigFmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638024588179558338
+  lastModified: 638025765851746901
   FileSizes:
   - Name: Desktop
     Value: 1188
@@ -178,7 +178,7 @@ MonoBehaviour:
   - {fileID: -8445202747537750905}
   StringsBanks:
   - {fileID: -8201186429722009049}
-  cacheTime: 638024588179558338
+  cacheTime: 638025765851746901
   cacheVersion: 131593
 --- !u!114 &1252801428523717149
 MonoBehaviour:
